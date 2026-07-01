@@ -111,6 +111,18 @@ class Customer(Person):
             f"  Blocked:                   {self.blocked}"
         )
 
+    def rent_vehicle(self, vehicle: Vehicle) -> None:
+        self.rented_vehicles.append(vehicle)
+        self.vehicles_rented += 1
+        print(f"Customer {self.full_name} rented vehicle {vehicle.license_plate}.")
+
+    def return_vehicle(self, vehicle: Vehicle) -> None:
+        self.rented_vehicles.remove(vehicle)
+        print(f"Customer {self.full_name} returned vehicle {vehicle.license_plate}.")
+
+    def cause_damage(self) -> None:
+        self.damages_caused += 1
+        print(f"Customer {self.full_name} caused damage to vehicle {vehicle.license_plate}.")
 
 class Employee(Person):
     """An employee earning a salary."""
