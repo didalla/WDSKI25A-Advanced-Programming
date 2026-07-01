@@ -37,13 +37,10 @@ class Person:
     ) -> None:
         self.first_name = first_name
         self.last_name = last_name
+        self.full_name = f"{self.first_name} {self.last_name}"
         self.birthdate = birthdate
         self.gender = gender
         self.bank_balance = bank_balance
-
-    def full_name(self) -> str:
-        """The person's full name — single source of truth for displays."""
-        return f"{self.first_name} {self.last_name}"
 
     def get_person_info(self) -> list[str]:
         """Return the core identity fields as a list."""
@@ -186,7 +183,7 @@ class Manager(Employee):
                       f"insufficient selling numbers.")
                 return True
         elif isinstance(employee, Mechanic):
-            if employee.average_repair_time > 300:
+            if employee.average_repair_time() > 300:
                 print(f"Firing Mechanic {employee.full_name} due to slow "
                       f"repair times!")
                 return True
@@ -265,7 +262,7 @@ class Mechanic(Employee):
             f"Mechanic {self.full_name} has repaired "
             f"{self.repairs_done} damage(s) in "
             f"{round(self.total_repair_time)} minutes "
-            f"(avg {round(self.average_repair_time)} min/repair)."
+            f"(avg {round(self.average_repair_time())} min/repair)."
         )
 
 
